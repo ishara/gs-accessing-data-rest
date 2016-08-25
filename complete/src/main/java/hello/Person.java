@@ -1,33 +1,87 @@
 package hello;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.OneToMany;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-public class Person {
+//@NamedEntityGraph(name = "Person.addresses",
+//        attributeNodes = @NamedAttributeNode("addresses"))
+//@NamedEntityGraph(name = "accountGraph", attributeNodes = {
+//        @NamedAttributeNode("id")})
+public class Person implements Serializable, IPerson
+{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-	private String firstName;
-	private String lastName;
+    private String firstName;
+    private String lastName;
+    private int age;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "person", fetch = FetchType.LAZY)
+    private List<Address> addresses;
 
-	public String getFirstName() {
-		return firstName;
-	}
+//    @JoinColumn(name = "id")
+//    @OneToMany(orphanRemoval = true,fetch = FetchType.LAZY)
+//    @OneToMany(orphanRemoval = true)
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public List<Address> getAddresses()
+    {
+        return addresses;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setAddresses( List<Address> addresses )
+    {
+        this.addresses = (List<Address>) addresses;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public void setFirstName( String firstName )
+    {
+        this.firstName = firstName;
+    }
+
+    public String getLastName()
+    {
+        return lastName;
+    }
+
+    public void setLastName( String lastName )
+    {
+        this.lastName = lastName;
+    }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    public void setId( long id )
+    {
+        this.id = id;
+    }
+
+    public int getAge()
+    {
+        return age;
+    }
+
+    public void setAge( int age )
+    {
+        this.age = age;
+    }
 }
