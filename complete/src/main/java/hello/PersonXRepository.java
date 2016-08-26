@@ -5,7 +5,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 //@RepositoryRestResource(collectionResourceRel = "people", path = "people")
-public interface PersonRepository extends CGPagingAndSortingRepository<Person, Long>
+public interface PersonXRepository extends CGPagingAndSortingRepository<PersonX, Long>
 {
 //    @EntityGraph(attributePaths = { "addresses" },type = EntityGraph.EntityGraphType.FETCH)
 
@@ -15,7 +15,7 @@ public interface PersonRepository extends CGPagingAndSortingRepository<Person, L
 //    @EntityGraph("accountGraph")
 //    @Transactional
 //    @Fetch( value = FetchMode.SUBSELECT)
-    Person getById( @Param("id") Long id );
+    PersonX getById( @Param("id") Long id );
 
-    List<Person> findByLastName( @Param("name") String name );
+    List<PersonX> findByLastName( @Param("name") String name );
 }

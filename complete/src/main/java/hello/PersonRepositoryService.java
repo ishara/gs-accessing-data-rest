@@ -8,6 +8,7 @@ package hello;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PersonRepositoryService
@@ -15,8 +16,9 @@ public class PersonRepositoryService
     @Autowired
     PersonRepository personRepository;
 
+//    @Transactional
     public IPerson getIPerson( long id )
     {
-        return personRepository.getById( id );
+        return personRepository.findOne( id );
     }
 }

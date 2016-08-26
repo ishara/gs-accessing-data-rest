@@ -12,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 //@JsonFilter("authorityFilter")
 public interface IPerson
 {
+    public long getId();
+
     public String getFirstName();
 
     public void setFirstName( String firstName );

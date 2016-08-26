@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jersey.JerseyAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.projection.SpelAwareProxyProjectionFactory;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 @SpringBootApplication
@@ -29,4 +30,8 @@ public class Application
 //        return b.filters( filterProvider );
 //    }
 
+    @Bean
+    public SpelAwareProxyProjectionFactory projectionFactory() {
+        return new SpelAwareProxyProjectionFactory();
+    }
 }

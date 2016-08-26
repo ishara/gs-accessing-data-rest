@@ -30,7 +30,10 @@ public class CustomController
     @RequestMapping("x2")
     public ResponseEntity<IPerson> getPersonsX2()
     {
-       return new ResponseEntity<IPerson>( personRepositoryService.getIPerson( 1 ),HttpStatus.ACCEPTED);
+        IPerson iPerson = personRepositoryService.getIPerson( 1 );
+        IPerson iPerson1 = new Person();
+        iPerson1.setFirstName( iPerson.getFirstName() );
+        return new ResponseEntity<IPerson>(iPerson1 , HttpStatus.ACCEPTED );
     }
     @RequestMapping("x1")
     public ResponseEntity<List<IPerson>> getPersons()

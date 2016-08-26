@@ -18,7 +18,7 @@ import java.util.List;
 //@NamedEntityGraph(name = "accountGraph", attributeNodes = {
 //        @NamedAttributeNode("id")})
 @Table(name = "PERSON" )
-public class Person implements Serializable, IPerson
+public class PersonX implements Serializable, IPerson
 {
 
     @Id
